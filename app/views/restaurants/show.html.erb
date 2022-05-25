@@ -1,9 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h1>
   <%= @restaurant.name %>
-</p>
+</h1>
 
 <p>
   <strong>Address:</strong>
@@ -17,8 +16,21 @@
 
 <p>
   <strong>Category:</strong>
-  <%= @restaurant.category %>
+  <%= @restaurant.category.capitalize %>
 </p>
 
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-<%= link_to 'Back', restaurants_path %>
+<%= link_to 'Back', restaurants_path , class: "btn btn-warning"%>
+<%= link_to 'Edit', edit_restaurant_path(@restaurant), class: "btn btn-info" %>
+<%= link_to 'Delete', restaurant_path(@restaurant),
+    class: "btn btn-danger", method: 'delete',
+    data: { confirm: "Are you sure?"  }%>
+
+<h2>Reveiws</h2>
+<%= render 'review_form', restaurant: @restaurant, review: @review %>
+
+<% @restaurant.reviews.each do |r| %>
+<div class="review my-3">
+  <p><%= r.rating  %> Stars</p>
+  <p><%= r.content  %></p>
+</div>
+<% end %>

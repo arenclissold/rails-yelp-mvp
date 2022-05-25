@@ -11,6 +11,14 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-dark bg-primary">
+      <div class="container">
+        <%= link_to "Rails Yelp", restaurants_path, class: 'navbar-brand' %>
+        <%= link_to "Add Restraunt", new_restaurant_path, class: 'btn btn-outline-light' %>
+      </div>
+    </nav>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
